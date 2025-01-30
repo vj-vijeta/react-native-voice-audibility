@@ -1,7 +1,7 @@
 import { NativeModules, NativeEventEmitter, Platform } from 'react-native';
 import type { NativeModule, EmitterSubscription } from 'react-native'; // Type-only import
 import React, { useState, useEffect } from 'react';
-import { Animated, View, Text, StyleSheet } from 'react-native';
+import { Animated, View, StyleSheet } from 'react-native'; // Removed unused `Text`
 
 // Error message for linking issues
 const LINKING_ERROR =
@@ -23,7 +23,9 @@ type VoiceAudibilityNativeType = NativeModule & {
 };
 
 // Access the native module
-const VoiceAudibilityNative = NativeModules.VoiceAudibility as VoiceAudibilityNativeType | undefined;
+const VoiceAudibilityNative = NativeModules.VoiceAudibility as
+  | VoiceAudibilityNativeType
+  | undefined;
 const eventEmitter = new NativeEventEmitter(VoiceAudibilityNative);
 
 // Throw an error if the module is not linked
@@ -32,92 +34,64 @@ if (!VoiceAudibilityNative) {
 }
 
 // Public API for the library
-
-/**
- * Starts audio recording with optional configuration.
- * @param options Configuration options, like sensitivity
- * @returns A promise resolving to a boolean indicating success
- */
 export async function startRecording(options: Options = {}): Promise<boolean> {
   return await VoiceAudibilityNative!.startRecording(options);
 }
 
-/**
- * Stops audio recording.
- * @returns A promise resolving to a boolean indicating success
- */
 export async function stopRecording(): Promise<boolean> {
   return await VoiceAudibilityNative!.stopRecording();
 }
 
-/**
- * Checks if the library is currently recording.
- * @returns A promise resolving to a boolean
- */
 export async function isRecording(): Promise<boolean> {
   return await VoiceAudibilityNative!.isRecording();
 }
 
-/**
- * Subscribes to audio data events, providing real-time amplitude values.
- * @param callback Function to handle amplitude data
- * @returns An EmitterSubscription for the event
- */
-export function addAudioDataListener(callback: (amplitude: number) => void): EmitterSubscription {
+export function addAudioDataListener(
+  callback: (amplitude: number) => void
+): EmitterSubscription {
   return eventEmitter.addListener('onAudioData', callback);
 }
 
-/**
- * Removes the subscription for audio data events.
- * @param subscription The EmitterSubscription to remove
- */
 export function removeAudioDataListener(subscription: EmitterSubscription) {
   subscription.remove();
 }
 
-/**
- * Floating microphone visualization component.
- * Displays a wave whose height and color change based on audio amplitude.
- */
+// Floating microphone visualization component
 export const FloatingMic = () => {
-  const [amplitude, setAmplitude] = useState(0);
+  const [, setAmplitude] = useState(0); // Removed unused `_amplitude`
   const [waveHeight] = useState(new Animated.Value(0));
   const [waveColor, setWaveColor] = useState('red'); // Default to red (silent)
 
   // Constants for visual appearance
-  const LOW_THRESHOLD = 0.1;  // Low audio intensity threshold (silent)
-  const HIGH_THRESHOLD = 1.0; // High audio intensity threshold (clear voice)
+  const LOW_THRESHOLD = 0.1;
+  const HIGH_THRESHOLD = 1.0;
 
-  // Effect for subscribing to audio data
   useEffect(() => {
     const subscription = addAudioDataListener((amp) => {
       setAmplitude(amp);
 
-      // Animate the wave height based on audio amplitude
       Animated.timing(waveHeight, {
-        toValue: Math.min(amp * 100, 100), // Limit wave height for visual effect
+        toValue: Math.min(amp * 100, 100),
         duration: 100,
         useNativeDriver: false,
       }).start();
 
-      // Change the wave color based on intensity
-      if (amp > HIGH_THRESHOLD) {
-        setWaveColor('green'); // Clear voice
-      } else if (amp > LOW_THRESHOLD) {
-        setWaveColor('yellow'); // Low intensity voice
-      } else {
-        setWaveColor('red'); // Silent or very low audio
-      }
+      setWaveColor(
+        amp > HIGH_THRESHOLD ? 'green' : amp > LOW_THRESHOLD ? 'yellow' : 'red'
+      );
     });
 
-    // Cleanup on unmount
     return () => removeAudioDataListener(subscription);
-  }, []);
+  }, [waveHeight]); // Added missing dependency
 
-  // Floating microphone visualizer component
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.wave, { height: waveHeight, backgroundColor: waveColor }]} />
+      <Animated.View
+        style={[
+          styles.wave,
+          { height: waveHeight, backgroundColor: waveColor },
+        ]}
+      />
     </View>
   );
 };
@@ -134,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 30,
     backgroundColor: 'black',
-    zIndex: 9999,  // Ensures it's on top of other UI elements
+    zIndex: 9999,
   },
   wave: {
     width: 10,

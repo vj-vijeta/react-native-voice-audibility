@@ -19,7 +19,7 @@ class VoiceAudibilityModule(private val reactContext: ReactApplicationContext)
   private var recordingThread: Thread? = null
 
   /**
-   * Starts recording and analyzes amplitude in real-time.
+   * Starts recording and analyzes _amplitude in real-time.
    * Options can include a sensitivity factor.
    */
   @ReactMethod
@@ -68,9 +68,9 @@ class VoiceAudibilityModule(private val reactContext: ReactApplicationContext)
       while (isRecording) {
         val readCount = audioRecord?.read(audioBuffer, 0, bufferSize) ?: 0
         if (readCount > 0) {
-          val amplitude = calculateRMS(audioBuffer, readCount) * sensitivity
-          // Emit amplitude event
-          sendEvent("onAudioData", amplitude)
+          val _amplitude = calculateRMS(audioBuffer, readCount) * sensitivity
+          // Emit _amplitude event
+          sendEvent("onAudioData", _amplitude)
         }
       }
     }
@@ -105,9 +105,9 @@ class VoiceAudibilityModule(private val reactContext: ReactApplicationContext)
     return Math.sqrt(mean)
   }
 
-  private fun sendEvent(eventName: String, amplitude: Double) {
+  private fun sendEvent(eventName: String, _amplitude: Double) {
     reactContext
       .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-      .emit(eventName, amplitude)
+      .emit(eventName, _amplitude)
   }
 }

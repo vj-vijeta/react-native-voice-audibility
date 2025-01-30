@@ -1,7 +1,7 @@
 // src/__tests__/FloatingMic.test.tsx
 
 import React from 'react';
-import { render } from '@testing-library/react-native';  // Use this for testing React Native components
+import { render } from '@testing-library/react-native'; // Use this for testing React Native components
 import FloatingMic from '../components/FloatingMic';
 
 jest.mock('react-native', () => {

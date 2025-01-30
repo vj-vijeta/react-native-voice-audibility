@@ -6,16 +6,16 @@ A React Native library that provides functionality to access the microphone and 
 
 Before using the library, ensure that you have the following:
 
-* **React Native 0.60+** (for auto-linking support)
-* **Node.js 12+** (for dependency compatibility)
-* **React Native CLI** or **Expo CLI**
+- **React Native 0.60+** (for auto-linking support)
+- **Node.js 12+** (for dependency compatibility)
+- **React Native CLI** or **Expo CLI**
 
 ## Features
 
-* Start and stop audio recording
-* Check microphone status
-* Cross-platform support for **iOS** and **Android**
-* Simple API for seamless integration with your React Native app
+- Start and stop audio recording
+- Check microphone status
+- Cross-platform support for **iOS** and **Android**
+- Simple API for seamless integration with your React Native app
 
 ## Installation
 
@@ -36,7 +36,11 @@ Ensure that you are using React Native 0.65.0 or above for full compatibility.
 To use the library, you first need to import the necessary functions:
 
 ```javascript
-import { startRecording, stopRecording, isRecording } from 'react-native-voice-audibility';
+import {
+  startRecording,
+  stopRecording,
+  isRecording,
+} from 'react-native-voice-audibility';
 ```
 
 ### 2. Start Recording
@@ -49,7 +53,7 @@ async function start() {
     const result = await startRecording();
     console.log('Recording started:', result);
   } catch (error) {
-    console.error("Error starting the recording:", error);
+    console.error('Error starting the recording:', error);
   }
 }
 ```
@@ -64,7 +68,7 @@ async function stop() {
     const result = await stopRecording();
     console.log('Recording stopped:', result);
   } catch (error) {
-    console.error("Error stopping the recording:", error);
+    console.error('Error stopping the recording:', error);
   }
 }
 ```
@@ -76,31 +80,34 @@ To check if the device is currently recording audio:
 ```javascript
 async function checkStatus() {
   const recordingStatus = await isRecording();
-  console.log(recordingStatus ? "Recording in progress" : "Not recording");
+  console.log(recordingStatus ? 'Recording in progress' : 'Not recording');
 }
 ```
 
 ### 5. Full Example
 
 ```javascript
-import { startRecording, stopRecording, isRecording } from 'react-native-voice-audibility';
+import {
+  startRecording,
+  stopRecording,
+  isRecording,
+} from 'react-native-voice-audibility';
 
 async function recordAudio() {
   try {
     // Start recording
     const startResult = await startRecording();
     console.log('Recording started:', startResult);
-    
+
     // Check recording status
     const status = await isRecording();
     console.log('Is recording:', status);
-    
+
     // Stop recording after 5 seconds
     setTimeout(async () => {
       const stopResult = await stopRecording();
       console.log('Recording stopped:', stopResult);
     }, 5000);
-    
   } catch (error) {
     console.error('Error in recording:', error);
   }
@@ -111,9 +118,9 @@ recordAudio();
 
 ## API Reference
 
-* **startRecording()**: Starts the audio recording and returns a Promise that resolves when recording is successfully started.
-* **stopRecording()**: Stops the audio recording and returns a Promise that resolves when recording is successfully stopped.
-* **isRecording()**: Checks if the microphone is currently recording. Returns a Promise that resolves to true if recording, false otherwise.
+- **startRecording()**: Starts the audio recording and returns a Promise that resolves when recording is successfully started.
+- **stopRecording()**: Stops the audio recording and returns a Promise that resolves when recording is successfully stopped.
+- **isRecording()**: Checks if the microphone is currently recording. Returns a Promise that resolves to true if recording, false otherwise.
 
 ## Permissions
 
@@ -144,15 +151,15 @@ async function requestPermission() {
   const granted = await PermissionsAndroid.request(
     PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
     {
-      title: "Microphone Permission",
-      message: "We need access to your microphone for recording audio."
+      title: 'Microphone Permission',
+      message: 'We need access to your microphone for recording audio.',
     }
   );
 
   if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-    console.log("Microphone permission granted");
+    console.log('Microphone permission granted');
   } else {
-    console.log("Microphone permission denied");
+    console.log('Microphone permission denied');
   }
 }
 ```
@@ -160,21 +167,22 @@ async function requestPermission() {
 ## How It Works
 
 This library uses native modules to interface with the microphone on both Android and iOS:
-* **Android**: Uses AudioRecord to capture audio
-* **iOS**: Uses AVAudioRecorder for audio recording
+
+- **Android**: Uses AudioRecord to capture audio
+- **iOS**: Uses AVAudioRecorder for audio recording
 
 ## Performance Considerations
 
-* Keep recording duration within reasonable limits to avoid memory overflow
-* Always stop recording when no longer needed to release system resources
-* Consider using background recording for long-duration use cases
+- Keep recording duration within reasonable limits to avoid memory overflow
+- Always stop recording when no longer needed to release system resources
+- Consider using background recording for long-duration use cases
 
 ## Troubleshooting
 
 ### Permissions Issues
 
-* For iOS: Verify NSMicrophoneUsageDescription in Info.plist
-* For Android: Check runtime permissions for RECORD_AUDIO
+- For iOS: Verify NSMicrophoneUsageDescription in Info.plist
+- For Android: Check runtime permissions for RECORD_AUDIO
 
 ### React Native Linking
 
@@ -213,13 +221,14 @@ For detailed instructions, see the contributing guide.
 ## Changelog
 
 ### v0.1.0 (2025-01-30)
-* Initial release with basic functionalities
-* Added isRecording() method
-* Set up basic permissions for iOS and Android
-* Compatible with React Native 0.60+
-* Added UI component for floating mic button
-* Fixed Android permission handling issues
-* basic error handling for recording methods
+
+- Initial release with basic functionalities
+- Added isRecording() method
+- Set up basic permissions for iOS and Android
+- Compatible with React Native 0.60+
+- Added UI component for floating mic button
+- Fixed Android permission handling issues
+- basic error handling for recording methods
 
 ## License
 
@@ -227,7 +236,8 @@ This library is released under the MIT License. See the LICENSE file for more de
 
 ## Acknowledgments
 
-* Built with create-react-native-library
+- Built with create-react-native-library
+
 ---
 
 Made with ❤️ using create-react-native-library

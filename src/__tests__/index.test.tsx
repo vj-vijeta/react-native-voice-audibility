@@ -1,6 +1,6 @@
 // src/__tests__/index.test.tsx
 
-import { startRecording, stopRecording, isRecording } from '../index';  // Adjust the import path to where your functions are
+import { startRecording, stopRecording, isRecording } from '../index'; // Adjust the import path to where your functions are
 
 jest.mock('react-native', () => {
   return {

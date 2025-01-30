@@ -6,17 +6,14 @@
     "jsx": "react-native",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "node_modules/react-native"
-    ],
+    "typeRoots": ["node_modules/@types", "node_modules/react-native"],
     "strict": true,
-    "outDir": "./lib",  // Or simply omit this if you want to compile in the root directory
+    "outDir": "./lib", // Or simply omit this if you want to compile in the root directory
     "declaration": true,
-    "declarationDir": "./lib/types",  // Optional, for type definitions
+    "declarationDir": "./lib/types", // Optional, for type definitions
     "sourceMap": true,
     "lib": ["ESNext", "DOM"],
-    "types": ["react","react-native","jest"],
+    "types": ["react", "react-native", "jest"],
     "moduleResolution": "Node",
     "paths": {
       "react-native-voice-audibility": ["./src/index"]

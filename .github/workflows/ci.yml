@@ -25,7 +25,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci  # Faster & more reliable than npm install
+        run: npm ci # Faster & more reliable than npm install
 
       - name: Lint files
         run: npm run lint
@@ -127,7 +127,7 @@ jobs:
 
       - name: Build example for Android
         env:
-          JAVA_OPTS: "-XX:MaxHeapSize=6g"
+          JAVA_OPTS: '-XX:MaxHeapSize=6g'
         run: |
           npx turbo run build:android --cache-dir="${{ env.TURBO_CACHE_DIR }}"
 

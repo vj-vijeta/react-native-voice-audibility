@@ -2,18 +2,22 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 type SoundBarProps = {
-  amplitude: number;
+  amplitude: number; // Removed `_` prefix
   barCount?: number;
   maxHeight?: number;
 };
 
-export default function SoundBar({ amplitude, barCount = 10, maxHeight = 100 }: SoundBarProps) {
+export default function SoundBar({
+  amplitude, // Removed `_` prefix
+  barCount = 10,
+  maxHeight = 100,
+}: SoundBarProps) {
   const soundBars = Array.from({ length: barCount }, (_, index) => {
     const height = amplitude * maxHeight * (index + 1);
     return (
       <View
         key={index}
-        style={[styles.bar, { height: Math.min(height, maxHeight) }]} // Limit max height
+        style={[styles.bar, { height: Math.min(height, maxHeight) }]}
       />
     );
   });

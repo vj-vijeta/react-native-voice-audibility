@@ -43,16 +43,16 @@ class VoiceAudibility: RCTEventEmitter {
       guard let channelData = buffer.floatChannelData?[0] else { return }
       let frameLength = Int(buffer.frameLength)
 
-      // Compute RMS amplitude from float samples
+      // Compute RMS _amplitude from float samples
       var sum: Float = 0.0
       for i in 0..<frameLength {
         sum += channelData[i] * channelData[i]
       }
       let mean = sum / Float(frameLength)
       let rms = sqrtf(mean)  // 0..1 typically
-      let amplitude = Double(rms) * sensitivity
+      let _amplitude = Double(rms) * sensitivity
 
-      self.sendEvent(withName: "onAudioData", body: amplitude)
+      self.sendEvent(withName: "onAudioData", body: _amplitude)
     }
 
     do {

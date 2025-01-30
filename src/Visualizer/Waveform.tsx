@@ -3,14 +3,21 @@ import { StyleSheet } from 'react-native';
 import { Svg, Polyline } from 'react-native-svg';
 
 type WaveformProps = {
-  amplitudeHistory: number[];
+  amplitudeHistory: number[]; // Removed `_` prefix
   width?: number;
   height?: number;
 };
 
-export default function Waveform({ amplitudeHistory, width = 300, height = 100 }: WaveformProps) {
+export default function Waveform({
+  amplitudeHistory, // Removed `_` prefix
+  width = 300,
+  height = 100,
+}: WaveformProps) {
   const points = amplitudeHistory
-    .map((amp, index) => `${index * (width / amplitudeHistory.length)},${height - amp * height}`)
+    .map(
+      (amp, index) =>
+        `${index * (width / amplitudeHistory.length)},${height - amp * height}`
+    )
     .join(' ');
 
   return (

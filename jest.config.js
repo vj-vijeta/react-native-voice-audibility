@@ -21,21 +21,19 @@
 
 //   };
 module.exports = {
-    preset: 'react-native',
-    transform: {
-      '^.+\\.(ts|tsx)$': 'ts-jest', // Transforms TypeScript files
+  preset: 'react-native',
+  transform: {
+    '^.+\\.(ts|tsx)$': ['ts-jest', { babelConfig: true }], // Ensures TypeScript files are transformed
+    '^.+\\.(js|jsx|mjs)$': 'babel-jest', // Allows Jest to process JSX files
+  },
+  transformIgnorePatterns: [
+    'node_modules/(?!(react-native|@react-native|@react-navigation|my-library)/)', // Ensures dependencies are transformed
+  ],
+  testMatch: ['**/__tests__/**/*.test.ts', '**/__tests__/**/*.test.tsx'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  globals: {
+    'ts-jest': {
+      isolatedModules: true, // Faster TS compilation
     },
-    transformIgnorePatterns: [
-      'node_modules/(?!(@react-native|react-native)/)', // Ensure react-native is transformed
-    ],
-    testMatch: [
-      '**/src/__tests__/**/*.test.ts',
-      '**/src/__tests__/**/*.test.tsx',
-    ],
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'node'],
-    globals: {
-        'ts-jest': {
-        isolatedModules: true, // Ensures the TS files are transformed properly
-        },
-    }
+  },
 };
