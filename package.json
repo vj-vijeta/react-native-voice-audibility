@@ -120,9 +120,9 @@
     "react-native": "^0.77.0"
   },
   "workspaces": [
+    "packages/*",
     "my-libraries/react-native-voice-audibility",
-    "example",
-    "packages/*"
+    "example"
   ],
   "packageManager": "yarn@3.6.1",
   "commitlint": {
