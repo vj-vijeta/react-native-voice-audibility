@@ -60,9 +60,10 @@
   },
   "dependencies": {
     "react": "^18.3.1",
+    "react-native": "^0.77.0",
     "react-native-cli": "^2.0.1",
-    "react-native-svg": "^15.11.1",
-    "react-native": "^0.77.0"
+    "react-native-codegen": "^0.70.7",
+    "react-native-svg": "^15.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.26.7",
