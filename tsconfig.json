@@ -1,0 +1,65 @@
+// {
+//   "compilerOptions": {
+//     "emitDeclarationOnly": true,
+//     "typeRoots": ["./node_modules/@types"],
+//     "outDir": "./lib",
+//     "declaration": true,
+//     "declarationDir": "./lib/types",
+//     "sourceMap": true,
+//     "jsx": "react",
+//     "lib": ["ESNext", "DOM"],
+//     "types": ["react-native"],
+//     "moduleResolution": "node",
+//     "module": "commonjs",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "verbatimModuleSyntax": false,
+//     "forceConsistentCasingInFileNames": true,
+//     "resolveJsonModule": true,
+//     "rootDir": ".",
+//     "paths": {
+//       "react-native-voice-audibility": ["./src/index"]
+//     },
+//     "allowUnreachableCode": false,
+//     "allowUnusedLabels": false,
+//     "noFallthroughCasesInSwitch": true,
+//     "noImplicitReturns": true,
+//     "noUncheckedIndexedAccess": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "target": "ESNext",
+    
+//   },
+//   "include": ["src/**/*"],
+//   "exclude": ["node_modules", "lib","node_modules/react-native/types/modules/globals.d.ts",
+//     "node_modules/react-native/types/index.d.ts"]
+// }
+
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "commonjs",
+    "jsx": "react-native",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/react-native"
+    ],
+    "strict": true,
+    "outDir": "./lib",  // Or simply omit this if you want to compile in the root directory
+    "declaration": true,
+    "declarationDir": "./lib/types",  // Optional, for type definitions
+    "sourceMap": true,
+    "lib": ["ESNext", "DOM"],
+    "types": ["react","react-native","jest"],
+    "moduleResolution": "Node",
+    "paths": {
+      "react-native-voice-audibility": ["./src/index"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
