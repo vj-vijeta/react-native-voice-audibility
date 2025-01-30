@@ -1,0 +1,34 @@
+{
+  "id": "2sLnCo6piyMwxQOItaAzU2vUl2t",
+  "version": "1",
+  "turboVersion": "1.13.4",
+  "monorepo": true,
+  "globalCacheInputs": {
+    "rootKey": "HEY STELLLLLLLAAAAAAAAAAAAA",
+    "files": {
+      "package.json": "94ad5058f8140f5bca3487d760948dbce7e8fe9a"
+    },
+    "hashOfExternalDependencies": "",
+    "globalDotEnv": null,
+    "environmentVariables": {
+      "specified": {
+        "env": [],
+        "passThroughEnv": null
+      },
+      "configured": [],
+      "inferred": [],
+      "passthrough": null
+    }
+  },
+  "packages": [],
+  "envMode": "infer",
+  "frameworkInference": true,
+  "tasks": [],
+  "user": "",
+  "scm": {
+    "type": "git",
+    "sha": "2f2917de848be1b158445f5042188f658df51804",
+    "branch": "main"
+  }
+}
+

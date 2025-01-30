@@ -38,7 +38,8 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "release": "release-it"
+    "release": "release-it",
+    "build:android": "react-native build-android"
   },
   "keywords": [
     "react-native",
@@ -108,7 +109,7 @@
     "rimraf": "^6.0.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "turbo": "^1.10.7",
+    "turbo": "^1.13.4",
     "typescript": "^4.9.5"
   },
   "resolutions": {
@@ -120,7 +121,8 @@
   },
   "workspaces": [
     "my-libraries/react-native-voice-audibility",
-    "example"
+    "example",
+    "packages/*"
   ],
   "packageManager": "yarn@3.6.1",
   "commitlint": {
