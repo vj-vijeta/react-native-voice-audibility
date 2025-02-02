@@ -2,6 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build:android": {
+      "dependsOn": [],
       "inputs": [
         "package.json",
         "android",
@@ -10,9 +11,10 @@
         "src/*.ts",
         "src/*.tsx"
       ],
-      "outputs": ["android/build","dist"]
+      "outputs": ["android/build", "dist"]
     },
     "build:ios": {
+      "dependsOn": [],
       "inputs": [
         "package.json",
         "ios",

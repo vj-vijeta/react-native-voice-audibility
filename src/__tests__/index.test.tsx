@@ -2,18 +2,18 @@
 
 import { startRecording, stopRecording, isRecording } from '../index'; // Adjust the import path to where your functions are
 
-jest.mock('react-native', () => {
-  return {
-    NativeModules: {
-      VoiceAudibility: {
-        startRecording: jest.fn().mockResolvedValue(true),
-        stopRecording: jest.fn().mockResolvedValue(true),
-        isRecording: jest.fn().mockResolvedValue(true),
-      },
-    },
-    NativeEventEmitter: jest.fn(),
-  };
-});
+// jest.mock('react-native', () => {
+//   return {
+//     NativeModules: {
+//       VoiceAudibility: {
+//         startRecording: jest.fn().mockResolvedValue(true),
+//         stopRecording: jest.fn().mockResolvedValue(true),
+//         isRecording: jest.fn().mockResolvedValue(true),
+//       },
+//     },
+//     NativeEventEmitter: jest.fn(),
+//   };
+// });
 
 describe('VoiceAudibility Tests', () => {
   it('should start recording', async () => {

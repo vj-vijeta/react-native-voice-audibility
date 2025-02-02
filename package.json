@@ -39,7 +39,8 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "release": "release-it",
-    "build:android": "react-native build-android"
+    "build:android": "react-native build-android",
+    "build:ios": "react-native run-ios"
   },
   "keywords": [
     "react-native",
@@ -121,8 +122,7 @@
     "react-native": "^0.77.0"
   },
   "workspaces": [
-    "packages/*",
-    "my-libraries/react-native-voice-audibility",
+   "my-libraries/*",
     "example"
   ],
   "packageManager": "yarn@3.6.1",
